@@ -29,3 +29,6 @@ echo 'python script not found.'
 echo 'downloading python script..'
 powershell cd \jacktempfolder; start-Bitstransfer https://raw.githubusercontent.com/jacklolidk/fuckinmodinstall/modinstall.py
 fi
+echo 'should be done.'
+pause
+exit
