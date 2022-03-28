@@ -27,5 +27,5 @@ echo 'python script found. skipping download.'
 else
 echo 'python script not found.'
 echo 'downloading python script..'
-powershell cd \jacktempfolder; start-Bitstransfer https://raw.githubusercontent.com/jack-team/jack-mod-installer/master/moddownloader.py
+powershell cd \jacktempfolder; start-Bitstransfer https://raw.githubusercontent.com/jacklolidk/fuckinmodinstall/modinstall.py
 fi
