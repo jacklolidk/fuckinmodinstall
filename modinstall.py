@@ -13,7 +13,7 @@ transport.connect(username = usr, password = passwd)
 sftp = paramiko.SFTPClient.from_transport(transport)
 
 path = currentdir + "/output.txt"
-sftp.get("/home/pi/modlist/output.txt")
+sftp.get("/home/pi/modlist/output.txt", path)
 
 sftp.close()
 transport.close()
