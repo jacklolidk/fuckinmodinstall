@@ -1,3 +1,4 @@
+@echo off
 echo 'welcom to jack mod install' 
 echo 'the script now uses python.'
 echo 'please wait while we install python + needed libraries.'
