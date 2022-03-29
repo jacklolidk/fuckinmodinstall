@@ -30,5 +30,8 @@ echo 'downloading python script..'
 powershell cd \jacktempfolder; start-Bitstransfer https://raw.githubusercontent.com/jacklolidk/fuckinmodinstall/modinstall.py
 fi
 echo 'should be done.'
+echo 'deleting temp folder. press any key'
 pause
+:: delete temp folder
+powershell rm -r \jacktempfolder
 exit
