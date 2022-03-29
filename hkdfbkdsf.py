@@ -110,7 +110,7 @@ for i, id in enumerate(PROJECT_IDS):
                 f.close()
                 print(f"=>{ticker} added mod {modName} (ID: {id}) to output.txt!")
     except: # The fileID isn't available
-        print(f"=>{ticker} {modName} failed processing! (ID: {id})")
+        print(f"\033[93m=>{ticker} {modName} failed processing! (ID: {id})")
         ##continue running and ignore
         continue
 
@@ -126,8 +126,12 @@ transport.connect(username = usr, password = passwd)
 sftp = paramiko.SFTPClient.from_transport(transport)
 
 path = currentdir + "/output.txt"
-sftp.put(path, "/home/pi/modlist/output.txt")
-
+##make sure file exists on server otherwise make it
+if not sftp.exists("/home/pi/output.txt"):
+    sftp.put(path, "/home/pi/output.txt")
+    print("\033[92m=>[SUCCESS] uploaded output.txt to server!")
+else:
+    print("\033[91m=>[WARNING] output.txt already exists on server!")
 sftp.close()
 transport.close()
 print("\033[97m=>done.")
