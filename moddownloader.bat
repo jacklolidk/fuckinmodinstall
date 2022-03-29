@@ -22,7 +22,7 @@ echo 'python3 installed.'
 pip3 install paramiko
 cd \jacktempfolder
 ::check if python script exists
-if exist moddownloader.py (
+if exist modinstall.py (
 echo 'python script found. skipping download.'
 else
 echo 'python script not found.'

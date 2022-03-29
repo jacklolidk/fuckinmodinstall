@@ -19,6 +19,8 @@ sftp.close()
 transport.close()
 print("downloaded modlist.\ninstalling..")
 ##echo each line for each line in modlist
+##testing. disabling download
+exit()
 with open("output.txt") as f:
     for line in f:
         currentline += 1
