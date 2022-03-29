@@ -8,16 +8,15 @@ echo 'python 2 not found. trying to find python 3'
 python3 --version >NUL
 if errorlevel 0 goto python3_installed
 echo 'python not installed. installing..'
-powershell cd \jacktempfolder\py; start-Bitstransfer https://www.python.org/ftp/python/3.10.4/python-3.10.4-amd64.exe
-cd \jacktempfolder\py
+powershell cd \; start-Bitstransfer https://www.python.org/ftp/python/3.10.4/python-3.10.4-amd64.exe
+cd \
 python-3.10.4-amd64.exe /quiet InstallAllUsers=1 PrependPath=1
 :python2_installed
 echo 'needed python3. installing..'
-powershell cd \jacktempfolder\py; start-Bitstransfer https://www.python.org/ftp/python/3.10.4/python-3.10.4-amd64.exe
-cd \jacktempfolder\py
+powershell cd \; start-Bitstransfer https://www.python.org/ftp/python/3.10.4/python-3.10.4-amd64.exe
 python-3.10.4-amd64.exe /quiet InstallAllUsers=1 PrependPath=1
 python3 --version >NUL
-if errorlevel 0 goto python3_installed
+if errorlevel 0 goto python3_installed else echo something died
 :python3_installed
 echo 'python3 installed.'
 pip3 install paramiko
