@@ -81,3 +81,10 @@ https://edge.forgecdn.net/files/3456/37/DCCH-1.17.x.jar
 https://edge.forgecdn.net/files/3549/723/smoothboot-fabric-1.18-1.7.0.jar
 https://edge.forgecdn.net/files/3557/31/enhancedblockentities-0.5+1.18.jar
 https://edge.forgecdn.net/files/3509/388/cullleaves-2.3.2.jar
+https://edge.forgecdn.net/files/3629/291/fastopenlinksandfolders-1.1.0.jar
+https://edge.forgecdn.net/files/3692/488/puzzle-1.2.0.jar
+https://edge.forgecdn.net/files/3209/972/lazydfu-0.1.2.jar
+https://edge.forgecdn.net/files/3657/92/midnightlib-0.4.0.jar
+https://edge.forgecdn.net/files/3605/309/sodium-fabric-mc1.18.1-0.4.0-alpha6+build.14.jar
+https://edge.forgecdn.net/files/3637/536/bettermounthud-1.1.4.jar
+https://edge.forgecdn.net/files/3625/238/TieFix-1.9.0.jar

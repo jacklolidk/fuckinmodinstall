@@ -79,6 +79,7 @@ with open(manifestfile) as f:
 FILE_IDS = [file["fileID"] for file in manifest["files"]]
 PROJECT_IDS = [file["projectID"] for file in manifest["files"]] # Project IDs of the mods, as shown on the mod page
 VERSION = manifest["minecraft"]["version"] # Name of the game version
+MODLOADER = manifest["minecraft"]["modLoaders"][0]["id"]
 
 for i, id in enumerate(PROJECT_IDS):
     ticker = f"[{i+1}/{len(PROJECT_IDS)}]" # For showing which mod we're on
@@ -101,6 +102,15 @@ for i, id in enumerate(PROJECT_IDS):
     try:
             print(f"=>{ticker} Starting download of mod {modName} (ID: {id})...")
             ##write to output.txt
+            ##check if output.txt exists.
+            if os.path.isfile(currentdir + '/output.txt'):
+            ##if it does, check for edge.forgecdn
+                with open(currentdir + '/output.txt') as f:
+                    if 'edge.forgecdn.net' in f.read():
+                        print('\033[93m=>[WARNING] output.txt has forge cdn links. deleting.')
+                        ##delete output.txt
+                        os.remove(currentdir + '/output.txt')
+                        continue
             #create output.txt if not exist
             if not os.path.isfile("output.txt"):
                 open("output.txt", "w").close()
@@ -114,7 +124,12 @@ for i, id in enumerate(PROJECT_IDS):
         ##continue running and ignore
         continue
 
-print(f"=>Finished proc all {len(PROJECT_IDS)} mods!")
+print(f"=>Finished proc all {len(PROJECT_IDS)} mods.")
+##add version and fabric info to output.txt at last line
+with open("output.txt", "a") as f:
+    f.write("\n" + f"minecraft {VERSION} with {MODLOADER}")
+    f.close()
+print("=>Added version and modloader info to output.txt.")
 print("\033[97m=>uploading to server...")
 
 host = "192.168.99.45"
