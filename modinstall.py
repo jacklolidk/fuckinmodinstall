@@ -1,3 +1,4 @@
+from operator import contains
 import paramiko
 import sys
 import os
@@ -25,7 +26,7 @@ with open("output.txt") as f:
         currentline += 1
         ##last line is version + modloader, so ignore it while downloading
         if currentline == len(f):
-            print("{}".format(currentline))
+            print("{}".format(line))
         else:
             print(f"installing mod {currentline}/{len(f)}")
             os.system(f"powershell cd ~\Appdata\Roaming\.minecraft\mods; Start-BitsTransfer {line}")
