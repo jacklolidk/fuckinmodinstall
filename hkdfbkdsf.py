@@ -75,7 +75,7 @@ manifest = ' '
 
 with open(manifestfile) as f:
     manifest = json.load(f)
-    print('\033[93m ')
+    print('\033[92m ')
 FILE_IDS = [file["fileID"] for file in manifest["files"]]
 PROJECT_IDS = [file["projectID"] for file in manifest["files"]] # Project IDs of the mods, as shown on the mod page
 VERSION = manifest["minecraft"]["version"] # Name of the game version
@@ -111,7 +111,8 @@ for i, id in enumerate(PROJECT_IDS):
                 print(f"=>{ticker} added mod {modName} (ID: {id}) to output.txt!")
     except: # The fileID isn't available
         print(f"=>{ticker} {modName} failed processing! (ID: {id})")
-        sys.exit()
+        ##continue running and ignore
+        continue
 
 print(f"=>Finished proc all {len(PROJECT_IDS)} mods!")
 print("\033[97m=>uploading to server...")
