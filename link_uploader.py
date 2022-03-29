@@ -116,7 +116,8 @@ for i, id in enumerate(PROJECT_IDS):
                 print(f"=>{ticker} added mod {modName} (ID: {id}) to output.txt!")
     except: # The fileID isn't available
         print(f"\033[93m=>{ticker} {modName} failed processing! (ID: {id})")
-        exit()
+        ##skip to next mod
+        continue
 
 print(f"=>Finished proc all {len(PROJECT_IDS)} mods.")
 ##add version and fabric info to output.txt at last line
