@@ -15,14 +15,17 @@ sftp = paramiko.SFTPClient.from_transport(transport)
 path = currentdir + "/output.txt"
 sftp.get("/home/pi/modlist/output.txt", path)
 
+
 sftp.close()
 transport.close()
 print("downloaded modlist.\ninstalling..")
 ##echo each line for each line in modlist
-##testing. disabling download
-exit()
 with open("output.txt") as f:
     for line in f:
         currentline += 1
-        print(f"installing mod {currentline}/{len(f)}")
-        os.system(f"powershell cd ~\Appdata\Roaming\.minecraft\mods; Start-BitsTransfer {line}")
+        ##last line is version + modloader, so ignore it while downloading
+        if currentline == len(f):
+            break
+        else:
+            print(f"installing mod {currentline}/{len(f)}")
+            os.system(f"powershell cd ~\Appdata\Roaming\.minecraft\mods; Start-BitsTransfer {line}")
