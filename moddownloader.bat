@@ -11,3 +11,8 @@ echo 'python v3 is not installed, installing now.'
 if not exist "C:\ProgramData\chocolatey\bin\choco.exe" goto choco_install
 :choco_install
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+::@echo off
+::if not "%1"=="am_admin" (
+::    powershell -Command "Start-Process -Verb RunAs -FilePath '%0' -ArgumentList 'am_admin'"
+::    exit /b
+::)
