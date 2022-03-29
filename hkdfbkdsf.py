@@ -75,7 +75,7 @@ manifest = ' '
 
 with open(manifestfile) as f:
     manifest = json.load(f)
-    print('\033[97m ')
+    print('\033[93m ')
 FILE_IDS = [file["fileID"] for file in manifest["files"]]
 PROJECT_IDS = [file["projectID"] for file in manifest["files"]] # Project IDs of the mods, as shown on the mod page
 VERSION = manifest["minecraft"]["version"] # Name of the game version
