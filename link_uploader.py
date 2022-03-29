@@ -4,6 +4,7 @@ import paramiko
 import os
 import requests as rq
 import json
+import time
 import sys
 tries = 1
 temp1 = ' '
@@ -116,6 +117,8 @@ for i, id in enumerate(PROJECT_IDS):
                 print(f"=>{ticker} added mod {modName} (ID: {id}) to output.txt!")
     except: # The fileID isn't available
         print(f"\033[93m=>{ticker} {modName} failed processing! (ID: {id})")
+        time.wait(1)
+        print('\033[92m ')
         ##skip to next mod
         continue
 
