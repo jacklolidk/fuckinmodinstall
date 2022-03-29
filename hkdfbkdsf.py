@@ -127,11 +127,9 @@ sftp = paramiko.SFTPClient.from_transport(transport)
 
 path = currentdir + "/output.txt"
 ##make sure file exists on server otherwise make it
-if not sftp.exists("/home/pi/output.txt"):
-    sftp.put(path, "/home/pi/output.txt")
-    print("\033[92m=>[SUCCESS] uploaded output.txt to server!")
-else:
-    print("\033[91m=>[WARNING] output.txt already exists on server!")
+
+sftp.put(path, "/home/pi/modlist/output.txt")
+
 sftp.close()
 transport.close()
 print("\033[97m=>done.")
