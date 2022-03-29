@@ -88,6 +88,14 @@ for i, id in enumerate(PROJECT_IDS):
     data = json.loads(rq.get(f"https://curse.nikky.moe/api/addon/{id}").content) # Put the request's data into a Python-readable format
     modName = data["name"]
 
+
+if os.path.isfile(currentdir + '/output.txt'):
+##if it does, check for edge.forgecdn
+    with open(currentdir + '/output.txt') as f:
+        if 'edge.forgecdn.net' in f.read():
+            print('\033[93m=>[WARNING] output.txt has forge cdn links and exists. deleting.')
+            print('\033[92m ')
+else: ##do things normally if it doesnt exist
     # Get mod's latest version for this game version
     print(f"{ticker} Getting mod download link for mod {modName} (ID: {id})...")
     data = json.loads(rq.get(f"https://curse.nikky.moe/api/addon/{id}/files").content)
@@ -103,15 +111,7 @@ for i, id in enumerate(PROJECT_IDS):
             print(f"=>{ticker} Starting download of mod {modName} (ID: {id})...")
             ##write to output.txt
             ##check if output.txt exists.
-            if os.path.isfile(currentdir + '/output.txt'):
-            ##if it does, check for edge.forgecdn
-                with open(currentdir + '/output.txt') as f:
-                    if 'edge.forgecdn.net' in f.read():
-                        print('\033[93m=>[WARNING] output.txt has forge cdn links. deleting.')
-                        ##delete output.txt
-                        os.remove(currentdir + '/output.txt')
-                        continue
-            #create output.txt if not exist
+            #create output.txt if it doesnt exist
             if not os.path.isfile("output.txt"):
                 open("output.txt", "w").close()
             with open("output.txt", "a") as f:
@@ -121,8 +121,7 @@ for i, id in enumerate(PROJECT_IDS):
                 print(f"=>{ticker} added mod {modName} (ID: {id}) to output.txt!")
     except: # The fileID isn't available
         print(f"\033[93m=>{ticker} {modName} failed processing! (ID: {id})")
-        ##continue running and ignore
-        continue
+
 
 print(f"=>Finished proc all {len(PROJECT_IDS)} mods.")
 ##add version and fabric info to output.txt at last line
@@ -148,3 +147,5 @@ sftp.put(path, "/home/pi/modlist/output.txt")
 sftp.close()
 transport.close()
 print("\033[97m=>done.")
+##delete file 
+os.remove(currentdir + '/output.txt')
